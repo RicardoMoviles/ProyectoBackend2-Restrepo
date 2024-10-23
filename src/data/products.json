@@ -1,0 +1,302 @@
+[
+    {
+        "title": "Guitarra Eléctrica Fender Stratocaster",
+        "description": "Guitarra eléctrica de 6 cuerdas con cuerpo de aliso y pastillas de sencillo.",
+        "code": "GTR001",
+        "price": 599.99,
+        "status": true,
+        "stock": 10,
+        "category": "Instrumentos",
+        "thumbnails": []
+    },
+    {
+        "title": "Piano Digital Yamaha P-125",
+        "description": "Piano digital compacto con 88 teclas de martillo graduado y sonido de piano acústico.",
+        "code": "PNO002",
+        "price": 649.99,
+        "status": true,
+        "stock": 8,
+        "category": "Instrumentos",
+        "thumbnails": []
+    },
+    {
+        "title": "Micrófono de Condensador Shure SM7B",
+        "description": "Micrófono de condensador de alta calidad para estudio con respuesta en frecuencia amplia.",
+        "code": "MIC003",
+        "price": 129.99,
+        "status": true,
+        "stock": 25,
+        "category": "Equipos de Audio",
+        "thumbnails": []
+    },
+    {
+        "title": "Auriculares de Estudio Sony MDR-7506",
+        "description": "Auriculares de estudio con sonido claro y diseño cerrado para monitoreo profesional.",
+        "code": "AUD004",
+        "price": 89.99,
+        "status": true,
+        "stock": 50,
+        "category": "Equipos de Audio",
+        "thumbnails": []
+    },
+    {
+        "title": "Bajo Eléctrico Gibson Thunderbird",
+        "description": "Bajo eléctrico con cuerpo de caoba y pastillas humbucker.",
+        "code": "BASS005",
+        "price": 300,
+        "status": true,
+        "stock": 4,
+        "category": "Instrumentos",
+        "thumbnails": []
+    },
+    {
+        "title": "Controlador MIDI Akai MPK Mini",
+        "description": "Controlador MIDI compacto con 25 teclas y pads sensibles a la velocidad.",
+        "code": "MIDI006",
+        "price": 99.99,
+        "status": true,
+        "stock": 15,
+        "category": "Equipos de Audio",
+        "thumbnails": []
+    },
+    {
+        "title": "Libro de Teoría Musical Hal Leonard Theory 101",
+        "description": "Libro completo de teoría musical con ejercicios prácticos y explicaciones detalladas.",
+        "code": "BOOK007",
+        "price": 19.99,
+        "status": true,
+        "stock": 100,
+        "category": "Partituras y Libros",
+        "thumbnails": []
+    },
+    {
+        "title": "Vinilo de Álbum The Beatles - Abbey Road",
+        "description": "Vinilo clásico de The Beatles con el álbum Abbey Road.",
+        "code": "VINYL008",
+        "price": 24.99,
+        "status": true,
+        "stock": 12,
+        "category": "Vinilos y CDs",
+        "thumbnails": []
+    },
+    {
+        "title": "Estuche para Guitarra Eléctrica",
+        "description": "Estuche acolchado para guitarra eléctrica con compartimentos para accesorios.",
+        "code": "CASE009",
+        "price": 49.99,
+        "status": true,
+        "stock": 20,
+        "category": "Accesorios para Instrumentos",
+        "thumbnails": []
+    },
+    {
+        "title": "Mezclador DJ Pioneer DJM-900NXS2",
+        "description": "Mezclador DJ de 4 canales con efectos y sonido de alta calidad.",
+        "code": "MIX010",
+        "price": 1299.99,
+        "status": true,
+        "stock": 5,
+        "category": "Equipos de Audio",
+        "thumbnails": []
+    },
+    {
+        "title": "Guitarra Acústica Martin D-28",
+        "description": "Guitarra acústica con cuerpo de caoba y tapa de abeto.",
+        "code": "GTR011",
+        "price": 1599.99,
+        "status": true,
+        "stock": 6,
+        "category": "Instrumentos",
+        "thumbnails": []
+    },
+    {
+        "title": "Teclado MIDI Novation Launchkey 49",
+        "description": "Teclado MIDI de 49 teclas con integración total con Ableton Live.",
+        "code": "MIDI012",
+        "price": 179.99,
+        "status": true,
+        "stock": 12,
+        "category": "Equipos de Audio",
+        "thumbnails": []
+    },
+    {
+        "title": "Amplificador de Guitarra Marshall JCM800",
+        "description": "Amplificador de guitarra a válvulas de 100W con sonido clásico Marshall.",
+        "code": "AMP013",
+        "price": 1199.99,
+        "status": true,
+        "stock": 7,
+        "category": "Instrumentos",
+        "thumbnails": []
+    },
+    {
+        "title": "Pedal de Efectos Boss DS-1",
+        "description": "Pedal de distorsión clásico con sonido potente y definido.",
+        "code": "PEDAL014",
+        "price": 49.99,
+        "status": true,
+        "stock": 30,
+        "category": "Accesorios para Instrumentos",
+        "thumbnails": []
+    },
+    {
+        "title": "Gaita Escocesa Highland Bagpipes",
+        "description": "Gaita tradicional escocesa con tubos de madera y bolsa de calidad.",
+        "code": "GAITA015",
+        "price": 499.99,
+        "status": true,
+        "stock": 3,
+        "category": "Instrumentos",
+        "thumbnails": []
+    },
+    {
+        "title": "Conga LP Giovanni Series",
+        "description": "Conga de la serie Giovanni con cuerpo de madera y parches de cuero.",
+        "code": "CONGA016",
+        "price": 349.99,
+        "status": true,
+        "stock": 8,
+        "category": "Instrumentos",
+        "thumbnails": []
+    },
+    {
+        "title": "Saxofón Alto Yamaha YAS-280",
+        "description": "Saxofón alto con afinación precisa y construcción durable.",
+        "code": "SAX017",
+        "price": 849.99,
+        "status": true,
+        "stock": 5,
+        "category": "Instrumentos",
+        "thumbnails": []
+    },
+    {
+        "title": "Armónica Hohner Marine Band",
+        "description": "Armónica de blues con construcción robusta y sonido auténtico.",
+        "code": "ARM018",
+        "price": 39.99,
+        "status": true,
+        "stock": 40,
+        "category": "Instrumentos",
+        "thumbnails": []
+    },
+    {
+        "title": "Estudio de Grabación Digital Ableton Live 11",
+        "description": "Software de producción musical con potentes herramientas de creación y edición.",
+        "code": "DAW019",
+        "price": 499.99,
+        "status": true,
+        "stock": 10,
+        "category": "Software Musical",
+        "thumbnails": []
+    },
+    {
+        "title": "Interface de Audio Focusrite Scarlett 2i2",
+        "description": "Interface de audio USB con 2 entradas y 2 salidas de alta calidad.",
+        "code": "INTER020",
+        "price": 159.99,
+        "status": true,
+        "stock": 20,
+        "category": "Equipos de Audio",
+        "thumbnails": []
+    },
+    {
+        "title": "Bongo LP Aspire",
+        "description": "Bongo de madera de la serie Aspire con parches de cuero.",
+        "code": "BONGO021",
+        "price": 129.99,
+        "status": true,
+        "stock": 15,
+        "category": "Instrumentos",
+        "thumbnails": []
+    },
+    {
+        "title": "Trompeta Bach TR300H",
+        "description": "Trompeta de latón con sonido brillante y construcción resistente.",
+        "code": "TROM022",
+        "price": 349.99,
+        "status": true,
+        "stock": 6,
+        "category": "Instrumentos",
+        "thumbnails": []
+    },
+    {
+        "title": "Libro de Partituras para Piano de Chopin",
+        "description": "Compilación de partituras para piano de las obras más conocidas de Chopin.",
+        "code": "BOOK023",
+        "price": 29.99,
+        "status": true,
+        "stock": 30,
+        "category": "Partituras y Libros",
+        "thumbnails": []
+    },
+    {
+        "title": "Vinilo de Álbum Pink Floyd - The Dark Side of the Moon",
+        "description": "Vinilo clásico de Pink Floyd con el álbum The Dark Side of the Moon.",
+        "code": "VINYL024",
+        "price": 34.99,
+        "status": true,
+        "stock": 18,
+        "category": "Vinilos y CDs",
+        "thumbnails": []
+    },
+    {
+        "title": "Guitarra de 12 Cuerdas Rickenbacker 360/12",
+        "description": "Guitarra de 12 cuerdas con sonido brillante y cuerpo de maple.",
+        "code": "GTR025",
+        "price": 1299.99,
+        "status": true,
+        "stock": 4,
+        "category": "Instrumentos",
+        "thumbnails": []
+    },
+    {
+        "title": "Pedal de Delay Electro-Harmonix Memory Man",
+        "description": "Pedal de delay con efectos analógicos y control de modulación.",
+        "code": "PEDAL026",
+        "price": 119.99,
+        "status": true,
+        "stock": 14,
+        "category": "Accesorios para Instrumentos",
+        "thumbnails": []
+    },
+    {
+        "title": "Guitarra Clásica Yamaha C40",
+        "description": "Guitarra clásica con cuerpo de nato y tapa de abeto.",
+        "code": "GTR027",
+        "price": 179.99,
+        "status": true,
+        "stock": 20,
+        "category": "Instrumentos",
+        "thumbnails": []
+    },
+    {
+        "title": "Pedal de Reverb TC Electronic Hall of Fame",
+        "description": "Pedal de reverb con múltiples modos de reverberación y ajuste de tono.",
+        "code": "PEDAL028",
+        "price": 139.99,
+        "status": true,
+        "stock": 11,
+        "category": "Accesorios para Instrumentos",
+        "thumbnails": []
+    },
+    {
+        "title": "Gaita Irlandesa Dixon",
+        "description": "Gaita tradicional irlandesa con sonido auténtico y construcción sólida.",
+        "code": "GAITA029",
+        "price": 450.00,
+        "status": true,
+        "stock": 6,
+        "category": "Instrumentos",
+        "thumbnails": []
+    },
+    {
+        "title": "Libro de Canto para Principiantes",
+        "description": "Guía completa para principiantes con ejercicios de canto y técnica vocal.",
+        "code": "BOOK030",
+        "price": 22.99,
+        "status": true,
+        "stock": 45,
+        "category": "Partituras y Libros",
+        "thumbnails": []
+    }
+]

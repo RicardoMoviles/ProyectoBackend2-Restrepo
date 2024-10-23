@@ -1,0 +1,20 @@
+{{> navbar}}
+<h2>{{titulo}}</h2>
+<hr>
+<br>
+<ul id="productList">
+    <!-- Productos se mostrarán aquí -->
+</ul>
+<br>
+  <div class="container" id="container-home"></div>
+  <div class="pagination-container">
+    <button class="btn btn-primary" id="btn-prev">Anterior</button>
+    <span>Página <span id="current-page">{{page}}</span> de {{totalPages}}</span>
+    <button class="btn btn-primary" id="btn-next">Siguiente</button>
+  </div>
+</body>
+
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="/js/home.js"></script>
+<script src="/js/cart.js"></script>
