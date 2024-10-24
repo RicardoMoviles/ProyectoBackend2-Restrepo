@@ -29,6 +29,12 @@ app.use((req, res, next) => {
     req.io = io;
     next();
 });
+app.use((req, res, next) => {
+    // Verifica si la cookie del token existe
+    const token = req.cookies.tokenCookie; // Asegúrate de tener el middleware de cookies configurado
+    req.isLogin = !!token; // Establece isLogin como verdadero si hay un token
+    next();
+});
 //configurar el handlebars
 app.engine("handlebars", engine())
 app.set("view engine", "handlebars")
@@ -43,6 +49,7 @@ app.use("/api/sessions", sessionsRouter)
 app.use('/api/products', passportCall("current"), auth2(["admin", "USER"]),  productsRouter)
 app.use('/api/carts', cartsRouter);
 app.use('/', vistasRouter)
+
 
 
 server.listen(PORT, () => {

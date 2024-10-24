@@ -11,7 +11,7 @@ btnSubmit.addEventListener("click", async(e)=>{
         alert("Complete datos...!!!")
         return 
     }
-    console.log(email, password)
+    //console.log(email, password)
     const body={email, password}
 
     let respuesta=await fetch("/api/sessions/login", {

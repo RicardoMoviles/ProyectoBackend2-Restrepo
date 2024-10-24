@@ -22,7 +22,7 @@ export const usuariosModel=mongoose.model(
             cart: {
                 type: mongoose.Schema.Types.ObjectId,
                 ref: 'cart', 
-                required: true
+                required: false
             },
             rol: {type: String, default:"user"}
         },

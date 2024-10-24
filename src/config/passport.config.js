@@ -29,8 +29,9 @@ export const iniciarPassport=()=>{
             async(req, username, password, done)=>{
                 console.log("ingresa")
                 try {
-                    let {nombre}=req.body
-                    if(!nombre){
+                    let {first_name, last_name, age}=req.body
+                    console.log(first_name)
+                    if(!first_name){
                         // console.log(`Falta nombre`)
                         return done(null, false, {message:`Complete el nombre`})
                     }
@@ -43,7 +44,8 @@ export const iniciarPassport=()=>{
 
                     password=generaHash(password)
 
-                    let nuevoUsuario=await UsuariosManager.addUser({nombre, email: username, password})
+                    let nuevoUsuario=await UsuariosManager.addUser({first_name, last_name, email: username, age, password})
+                    console.log(nuevoUsuario)
                     return done(null, nuevoUsuario)
                 } catch (error) {
                     return done(error)
@@ -60,6 +62,7 @@ export const iniciarPassport=()=>{
             async(username, password, done)=>{
                 try {
                     let usuario=await UsuariosManager.getBy({email:username})
+                    console.log(usuario)
                     if(!usuario){
                         return done(null, false)
                     }

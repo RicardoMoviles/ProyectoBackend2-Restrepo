@@ -86,18 +86,18 @@ router.get('/realtimeproducts', async (req, res) => {
 
 router.get('/registro',(req,res)=>{
 
-    res.status(200).render('registro')
+    res.status(200).render('registro', { isLogin: req.isLogin })
 })
 
 router.get('/login',(req,res)=>{
 
-    res.status(200).render('login')
+    res.status(200).render('login', { isLogin: req.isLogin })
 })
 
-// router.get('/perfil', (req,res)=>{
+router.get('/perfil', (req,res)=>{
 
-//     let usuario=req.session.usuario
-//     res.status(200).render('perfil', {
-//         usuario, isLogin:req.session.usuario
-//     })
-// })
+    let usuario=req.user
+    res.status(200).render('perfil', {
+        usuario, isLogin: req.isLogin 
+    })
+})
