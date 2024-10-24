@@ -41,23 +41,6 @@ router.post(
     }
 )
 
-// router.get("/logout", (req, res)=>{
-//     let {web}=req.query
-
-//     req.session.destroy(error=>{
-//         if(error){
-//             res.setHeader('Content-Type','application/json');
-//             return res.status(500).json({error:`Error al realizar logout`})
-//         }
-//         if(web){
-//             return res.redirect("/login?mensaje=Logout exitoso")
-//         }else{
-//             res.setHeader('Content-Type','application/json');
-//             return res.status(200).json({payload:"Logout exitoso...!!!"});
-//         }
-//     })
-// })
-
 router.get('/logout', (req, res) => {
     let { web } = req.query; // Obtener el parámetro 'web' de la consulta
 

@@ -26,8 +26,10 @@ btnSubmit.addEventListener("click", async(e)=>{
         alert(error)
         return 
     }else{
-        let datos=await respuesta.json()
+        const datos=await respuesta.json()
         console.log(datos)
         alert(datos.payload)
+        // Redirigir a la página principal
+        window.location.href = "/";
     }
 })

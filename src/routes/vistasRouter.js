@@ -22,7 +22,8 @@ router.get('/', async (req, res) => {
             products: products.payload,
             page: products.page || 1,
             totalPages: products.totalPages || 1,
-            numCarts: cart.products.length || 0
+            numCarts: cart.products.length || 0,
+            isLogin: req.isLogin 
         });
     } catch (error) {
         console.log(error);
@@ -49,6 +50,7 @@ router.get("/cart", async (req, res) => {
         res.status(200).render("cart", {
             title: "Cart",
             products: cartProducts.products,
+            isLogin: req.isLogin 
         });
     } catch (error) {
         console.error("Error al cargar el carrito:", error);
@@ -59,7 +61,7 @@ router.get("/cart", async (req, res) => {
     }
 });
 
-router.get('/realtimeproducts', async (req, res) => {
+router.get('/realtimeproducts',  async (req, res) => {
     const cartId = "66e79f9222db5c70e4712aba";  // Este ID debería ser dinámico en un caso real
     let products;
     const cart = await CartsManager.getCartProducts(cartId);
@@ -80,7 +82,8 @@ router.get('/realtimeproducts', async (req, res) => {
     res.status(200).render("realTimeProducts", {
         realEstilo: "real-styles",
         products: products,
-        numCarts: cart.products.length || 0
+        numCarts: cart.products.length || 0,
+        isLogin: req.isLogin 
     })
 })
 
@@ -94,10 +97,3 @@ router.get('/login',(req,res)=>{
     res.status(200).render('login', { isLogin: req.isLogin })
 })
 
-router.get('/perfil', (req,res)=>{
-
-    let usuario=req.user
-    res.status(200).render('perfil', {
-        usuario, isLogin: req.isLogin 
-    })
-})
