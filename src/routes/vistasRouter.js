@@ -1,6 +1,9 @@
 import {Router} from 'express'
 import {ProductsManager} from "../dao/productsManager.js"
 import {CartsManager} from "../dao/CartsManager.js"
+import { passportCall } from '../utils.js'
+import { auth2 } from '../middleware/auth.js'
+
 
 export const router = Router()
 
@@ -95,5 +98,14 @@ router.get('/registro',(req,res)=>{
 router.get('/login',(req,res)=>{
 
     res.status(200).render('login', { isLogin: req.isLogin })
+})
+
+router.get('/perfil', passportCall("current"), auth2(["admin", "USER"])  , (req,res)=>{
+
+    let usuario=req.user
+
+    res.status(200).render('perfil', {
+        usuario, isLogin: req.isLogin
+    })
 })
 
