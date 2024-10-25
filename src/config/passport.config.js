@@ -20,6 +20,35 @@ const buscarToken=req=>{
 export const iniciarPassport=()=>{
 
     // paso 1
+
+    passport.use("github", 
+        new github.Strategy(
+            {
+                clientID:"Iv23lijs0OkZZY0JCb6v",
+                clientSecret:"380b5cbb4445972f45397c18eccb38eb207bd18b",
+                callbackURL:"http://localhost:8080/api/sessions/callbackGithub"
+            },
+            async (token, rt, profile, done)=>{
+                try {
+                    // console.log(profile)
+                    let {name, email}=profile._json
+                    if(!name || !email){
+                        return done(null, false)
+                    }
+                    let usuario=await UsuariosManager.getBy({email})
+                    if(!usuario){
+                        usuario=await UsuariosManager.addUser({nombre: name, email, profileGithub: profile})
+                        return done(null, false)
+                    }
+                    
+                    return done(null, usuario)
+                } catch (error) {
+                    return done(error)
+                }
+            }
+        )
+    )
+
     passport.use("registro", 
         new local.Strategy(
             {
@@ -72,7 +101,7 @@ export const iniciarPassport=()=>{
 
                     // limpiar data sensible / confidencial...
                     delete usuario.password
-                    return done(null, usuario)
+                    return done(null, {user: usuario})
                 } catch (error) {
                     return done(error)
                 }

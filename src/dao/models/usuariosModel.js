@@ -12,7 +12,6 @@ export const usuariosModel=mongoose.model(
             },
             age: {
                 type: Number,
-                required: true,
                 min: [0, 'Quantity cannot be negative']
             },
             password: {
@@ -27,7 +26,8 @@ export const usuariosModel=mongoose.model(
             rol: {type: String, default:"user"}
         },
         {
-            timestamps: true, 
+            timestamps:true, 
+            strict: false
         }
     )
 )

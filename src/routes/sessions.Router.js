@@ -11,6 +11,27 @@ router.get('/error', (req, res) => {
 })
 
 // paso 3:
+
+router.get('/github',
+    passport.authenticate("github", {})   
+)
+
+// paso 3
+router.get("/callbackGithub",
+    passport.authenticate("github",{session: false, failureRedirect:"/api/sessions/error"}),
+    (req, res)=>{
+        const {email, nombre, rol} = req.user;
+
+         // Generar el JWT
+        let token = jwt.sign({nombre: nombre, email: email, rol:rol}, config.SECRET, { expiresIn: 3600 })
+        res.cookie("tokenCookie", token, { httpOnly: true })
+
+        res.setHeader('Content-Type','application/json');
+        // Redirigir a la página de inicio
+        return res.redirect('/');
+    }
+)
+
 router.post(
     "/registro",
     // passport.authenticate("registro", {session: false, failureRedirect:"/api/sessions/error"}),
