@@ -3,6 +3,7 @@ import passport from 'passport';
 import jwt from "jsonwebtoken"
 import { config } from '../config/config.js';
 import { passportCall } from '../utils.js';
+import { UsuariosDTO } from '../DTO/UsuariosDTO.js';
 export const router = Router()
 
 router.get('/error', (req, res) => {
@@ -48,16 +49,19 @@ router.post(
     "/login",
     passport.authenticate("login", { session: false, failureRedirect: "/api/sessions/error" }),
     (req, res) => {
+
+        let usuario = new UsuariosDTO(req.user)
+        
         // req.user // lo deja passport.authenticate si todo sale OK
-        let token = jwt.sign(req.user, config.SECRET, { expiresIn: 3600 })
+        let token = jwt.sign({...usuario}, config.SECRET, { expiresIn: 3600 })
     
         res.cookie("tokenCookie", token, { httpOnly: true })
         res.setHeader('Content-Type', 'application/json');
         
         //return res.status(201).json({payload:`Login exitoso para ${req.user.nombre}`, usuarioLogueado:req.user, token});
         return res.status(201).json({ 
-            payload: `Login exitoso para ${req.user.first_name}`, 
-            usuarioLogueado: req.user 
+            payload: `Login exitoso para ${usuario.nombre}`, 
+            usuarioLogueado: usuario 
         });
     }
 )
@@ -76,3 +80,9 @@ router.get('/logout', (req, res) => {
     // Enviar respuesta JSON si no hay redirección
     res.status(200).json({ message: 'Logout exitoso' });
 });
+
+router.get("/current", passport.authenticate("current", {session:false}), (req, res)=>{
+
+    res.setHeader('Content-Type','application/json');
+    return res.status(200).json({datosUsuarioLogueado:req.user});
+})
