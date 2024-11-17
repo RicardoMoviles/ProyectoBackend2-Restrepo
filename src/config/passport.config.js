@@ -2,7 +2,7 @@ import passport from "passport"
 import local from "passport-local"
 import github from "passport-github2"
 import passportJWT from "passport-jwt"
-import { UsuariosManager } from "../dao/UsuariosManager.js"
+import { UsuariosDAO } from "../dao/UsuariosDAO.js"
 import { generaHash, validaHash } from "../utils.js"
 import { config } from "./config.js"
 
@@ -35,9 +35,9 @@ export const iniciarPassport=()=>{
                     if(!name || !email){
                         return done(null, false)
                     }
-                    let usuario=await UsuariosManager.getBy({email})
+                    let usuario=await UsuariosDAO.getBy({email})
                     if(!usuario){
-                        usuario=await UsuariosManager.addUser({nombre: name, email, profileGithub: profile})
+                        usuario=await UsuariosDAO.addUser({nombre: name, email, profileGithub: profile})
                         return done(null, false)
                     }
                     
@@ -64,7 +64,7 @@ export const iniciarPassport=()=>{
                         // console.log(`Falta nombre`)
                         return done(null, false, {message:`Complete el nombre`})
                     }
-                    let existe=await UsuariosManager.getBy({email:username})
+                    let existe=await UsuariosDAO.getBy({email:username})
                     if(existe){
                         // console.log(`existe`)
                         // console.log(existe)
@@ -73,7 +73,7 @@ export const iniciarPassport=()=>{
 
                     password=generaHash(password)
 
-                    let nuevoUsuario=await UsuariosManager.addUser({first_name, last_name, email: username, age, password})
+                    let nuevoUsuario=await UsuariosDAO.addUser({first_name, last_name, email: username, age, password})
                     console.log(nuevoUsuario)
                     return done(null, nuevoUsuario)
                 } catch (error) {
@@ -90,8 +90,8 @@ export const iniciarPassport=()=>{
             },
             async(username, password, done)=>{
                 try {
-                    let usuario=await UsuariosManager.getBy({email:username})
-                    console.log(usuario)
+                    let usuario=await UsuariosDAO.getBy({email:username})
+                    //console.log(usuario)
                     if(!usuario){
                         return done(null, false)
                     }
@@ -101,7 +101,7 @@ export const iniciarPassport=()=>{
 
                     // limpiar data sensible / confidencial...
                     delete usuario.password
-                    return done(null, {user: usuario})
+                    return done(null, usuario)
                 } catch (error) {
                     return done(error)
                 }

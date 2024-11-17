@@ -6,7 +6,7 @@ import {productsModel} from './models/productsModel.js'
 
 const cartsFilePath = path.resolve('src/data/carts.json');
 
-export class CartsManager {
+export class CartsDAO {
     constructor() { }
 
 /*     static async getCarts() {

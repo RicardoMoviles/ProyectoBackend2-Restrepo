@@ -1,6 +1,6 @@
 import {Router} from 'express'
-import {ProductsManager} from "../dao/productsManager.js"
-import {CartsManager} from "../dao/CartsManager.js"
+import {ProductsDAO} from "../dao/ProductsDAO.js"
+import {CartsDAO} from "../dao/CartsDAO.js"
 import { passportCall } from '../utils.js'
 import { auth2 } from '../middleware/auth.js'
 
@@ -10,8 +10,8 @@ export const router = Router()
 router.get('/', async (req, res) => {
     const cartId = "66e79f9222db5c70e4712aba";  // Este ID debería ser dinámico en un caso real
     try {
-        const products = await ProductsManager.getProducts();
-        const cart = await CartsManager.getCartProducts(cartId);
+        const products = await ProductsDAO.getProducts();
+        const cart = await CartsDAO.getCartProducts(cartId);
 
         if (!products || !products.payload) {
             return res.status(404).render("error", { error: "Productos o carrito no encontrado" });
@@ -44,7 +44,7 @@ router.get('/', async (req, res) => {
 router.get("/cart", async (req, res) => {
     const cartId = "66e79f9222db5c70e4712aba";  // Este ID debería ser dinámico en un caso real
     try {
-        const cartProducts = await CartsManager.getCartProducts(cartId);
+        const cartProducts = await CartsDAO.getCartProducts(cartId);
 
         if (!cartProducts || !cartProducts.products) {
             return res.status(404).render("error", { error: "Carrito no encontrado" });
@@ -67,9 +67,9 @@ router.get("/cart", async (req, res) => {
 router.get('/realtimeproducts',  async (req, res) => {
     const cartId = "66e79f9222db5c70e4712aba";  // Este ID debería ser dinámico en un caso real
     let products;
-    const cart = await CartsManager.getCartProducts(cartId);
+    const cart = await CartsDAO.getCartProducts(cartId);
     try {
-        products = await ProductsManager.getProducts();
+        products = await ProductsDAO.getProducts();
     } catch (error) {
         console.log(error);
         res.setHeader('Content-Type', 'application/json');

@@ -88,4 +88,4 @@ io.on('connection', (socket) => {
     });
 });
 
-connDB(config.MONGO_URL, config.DB_NAME)
+await connDB.conectar(config.MONGO_URL, config.DB_NAME)

@@ -1,6 +1,8 @@
+process.loadEnvFile("./src/.env")
+
 export const config = {
-    PORT: 8080,
-    MONGO_URL: "mongodb+srv://MongoR:PNywTGe1soQsKr5obzWK@ecommerce.qa3au.mongodb.net/?retryWrites=true&w=majority&appName=ecommerce",
-    DB_NAME: "ecommerce",
-    SECRET: "CoderCoder123"
+    PORT: process.env.PORT,
+    MONGO_URL: process.env.MONGO_URL,
+    DB_NAME: process.env.DB_NAME,
+    SECRET: process.env.SECRET
 }

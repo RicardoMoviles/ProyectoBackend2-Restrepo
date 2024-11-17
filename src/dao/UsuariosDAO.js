@@ -1,6 +1,6 @@
 import { usuariosModel } from "./models/usuariosModel.js";
 
-export class UsuariosManager{
+export class UsuariosDAO{
     static async getBy(filtro={}){
         return await usuariosModel.findOne(filtro).lean()
     }

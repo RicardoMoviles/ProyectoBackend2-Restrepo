@@ -1,6 +1,6 @@
 import {productsModel} from './models/productsModel.js'
 
-export class ProductsManager {
+export class ProductsDAO {
     constructor() { }
 
     static async getProducts(limit = 10, page = 1, query, sort) {
