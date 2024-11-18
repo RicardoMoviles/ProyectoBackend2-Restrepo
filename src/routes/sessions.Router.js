@@ -35,13 +35,13 @@ router.get("/callbackGithub",
 
 router.post(
     "/registro",
-    // passport.authenticate("registro", {session: false, failureRedirect:"/api/sessions/error"}),
-    // passport.authenticate("registro", {session: false}),
+    // passport.authenticate("register", {session: false, failureRedirect:"/api/sessions/error"}),
+    // passport.authenticate("register", {session: false}),
     passportCall("registro"),
     (req, res) => {
         // req.user // lo deja passport.authenticate si todo sale OK
         res.setHeader('Content-Type', 'application/json');
-        return res.status(201).json({ payload: `Registro exitoso para ${req.user.first_name}`, usuario: req.user });
+        return res.status(201).json({ payload: `registro exitoso para ${req.user.first_name}`, usuario: req.user });
     }
 )
 

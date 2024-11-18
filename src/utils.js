@@ -17,11 +17,15 @@ export const procesaErrores=(res, error)=>{
 
 export const passportCall=estrategia=>function (req, res, next) {
     passport.authenticate(estrategia, function (err, user, info, status) {
-        if (err) { return next(err) }   // return done(error)
+        if (err) { 
+            console.log("Entre a err")
+            return next(err) }   // return done(error)
         if (!user) { // return done(null, false)
+            console.log("Entre a !user")
             res.setHeader('Content-Type','application/json');
             return res.status(401).json({error:`${info.message?info.message:info.toString()}`})
         }  
+        console.log("Entre OK")
         req.user=user;   // return done(null, usuario)
         return next()
     })(req, res, next);

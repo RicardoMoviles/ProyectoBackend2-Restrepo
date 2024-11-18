@@ -117,8 +117,10 @@ export const iniciarPassport=()=>{
             },
             async(usuario, done)=>{
                 try {
+                    console.log("JWT Decoded User:", usuario);  // Verifica el payload del JWT
                     return done(null, usuario)
                 } catch (error) {
+                    console.error("Error en la estrategia JWT:", error);
                     return done(error)
                 }
             }

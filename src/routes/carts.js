@@ -1,9 +1,14 @@
 import { Router } from "express"
-import {CartsDAO} from "../dao/CartsDAO.js"
-import { isValidObjectId } from "mongoose"
 import { CartsController } from "../controller/CartsController.js";
-
+import { passportCall } from "../utils.js";
+import { auth2 } from "../middleware/auth.js";
+import passport from 'passport';
+import { iniciarPassport } from '../config/passport.config.js';
 export const router = Router()
+
+// paso 2
+iniciarPassport()
+router.use(passport.initialize())
 
 // Crear un nuevo carrito
 router.post('/', CartsController.createCart);
@@ -12,7 +17,7 @@ router.post('/', CartsController.createCart);
 router.get('/:cid', CartsController.getCart);
 
 // Agregar un producto al carrito
-router.post('/:cid/products/:pid', CartsController.addProductToCart);
+router.post('/:cid/products/:pid', passportCall("current"), auth2(["USER"]), CartsController.addProductToCart);
 
 // Eliminar producto del carrito
 router.delete('/:cid/products/:pid', CartsController.deleteProductFromCart);

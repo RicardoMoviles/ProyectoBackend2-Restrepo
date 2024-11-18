@@ -1,5 +1,26 @@
 document.addEventListener('DOMContentLoaded', async () => {
-    const socket = io();
+    // Obtener el token JWT desde las cookies (o puedes usar localStorage, dependiendo de cómo lo guardes)
+    // Función para obtener el token JWT de las cookies
+    const getCookie = (name) => {
+        const value = `; ${document.cookie}`;
+        const parts = value.split(`; ${name}=`);
+        if (parts.length === 2) return parts.pop().split(';').shift();
+        return null; // Si no hay token
+    };
+
+    // Obtener el token desde la cookie 'tokenCookie'
+    const token = getCookie('tokenCookie');  // Cambia esto al nombre de tu cookie
+
+    // if (!token) {
+    //     console.error('Token no encontrado. El usuario no está autenticado.');
+    //     return;
+    // }
+
+    // Conectar al WebSocket, pasando el token como parámetro en la URL
+    const socket = io('http://localhost:8080/', {
+        query: { token }  // Pasamos el token JWT como parte de la consulta
+    });
+
     const list = document.getElementById('productList');
     const btnNext = document.getElementById("btn-next");
     const btnPrev = document.getElementById("btn-prev");
@@ -52,6 +73,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const fetchProducts = async () => {
         try {
             const response = await fetch(`/api/products/?page=${page}`); // Solicitud GET con número de página
+            console.log("respuesta del fectch: ", response)
             if (response.ok) {
                 const data = await response.json();
                 maxPage = data.totalPages; // Asegúrate de que tu backend envíe 'totalPages'
