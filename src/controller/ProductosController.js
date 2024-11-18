@@ -1,6 +1,6 @@
-import { ProductsDAO } from "../dao/ProductsDAO.js";
 import { procesaErrores } from "../utils.js";
 import { isValidObjectId } from "mongoose"
+import { productService } from "../repository/ProductService.js";
 
 export class ProductosController {
     static async getProducts(req, res){
@@ -18,7 +18,7 @@ export class ProductosController {
         
     
         try {
-            const products = await  ProductsDAO.getProducts(limitNumber || 10, pageNumber || 1, query, sort);
+            const products = await  productService.getProducts(limitNumber || 10, pageNumber || 1, query, sort);
             /* if(limit){
                 if (!isNaN(limit)) {
                     products = products.slice(0, parseInt(limit));
@@ -40,7 +40,7 @@ export class ProductosController {
 
         try {
             let { pid } = req.params
-            const product = await  ProductsDAO.getProductsById(pid);
+            const product = await  productService.getProductsById(pid);
             if (!product) {
                 return res.status(404).json({ error: "Producto no encontrado" });
             }
@@ -60,7 +60,7 @@ export class ProductosController {
             return res.status(400).json({ error: 'Faltan campos obligatorios' });
         }
     
-        let existe = await  ProductsDAO.getProductBy({ code })
+        let existe = await  productService.getProductBy({ code })
         if (existe) {
             res.setHeader('Content-Type', 'application/json');
             return res.status(400).json({ error: `Ya existe un producto con el codigo ${code}` })
@@ -69,8 +69,8 @@ export class ProductosController {
         // validar todo lo que se necesite...
         try {
             let preProducto = { title, description, code, price, status, stock, category, thumbnails }
-            let productoNuevo = await  ProductsDAO.addProduct(preProducto)
-            req.io.emit("actualizarProductos", await  ProductsDAO.getProducts())
+            let productoNuevo = await  productService.addProduct(preProducto)
+            req.io.emit("actualizarProductos", await  productService.getProducts())
             res.setHeader('Content-Type', 'application/json');
             return res.status(200).json({ productoNuevo });
         } catch (error) {
@@ -98,7 +98,7 @@ export class ProductosController {
             if (aModificar._id) {
                 delete aModificar._id;
             }
-            let productoModificado = await  ProductsDAO.updateProduct(pid, aModificar)
+            let productoModificado = await  productService.updateProduct(pid, aModificar)
             res.setHeader('Content-Type', 'application/json');
             return res.status(200).json({ productoModificado });
     
@@ -122,7 +122,7 @@ export class ProductosController {
         }
     
         try {
-            await  ProductsDAO.deleteProduct(pid);
+            await  productService.deleteProduct(pid);
             res.status(200).json({ mensaje: "Producto eliminado.", id: pid });
         } catch (error) {
             console.log(error);
